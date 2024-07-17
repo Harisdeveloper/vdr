@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Try-On</title>
+</head>
+<body>
+    <h1>Virtual Try-On</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="background_image">Upload Background Image:</label>
+        <input type="file" id="background_image" name="background_image" accept="image/*" required><br><br>
+        <label for="garment_image">Upload Garment Image:</label>
+        <input type="file" id="garment_image" name="garment_image" accept="image/*" required><br><br>
+        <input type="submit" value="Try On">
+    </form>
+    {% if output_image and masked_image %}
+        <h2>Output Image</h2>
+        <img src="{{ url_for('static', filename=output_image) }}" alt="Output Image">
+        <h2>Masked Image</h2>
+        <img src="{{ url_for('static', filename=masked_image) }}" alt="Masked Image">
+    {% endif %}
+</body>
+</html>
